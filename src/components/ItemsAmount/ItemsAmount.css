@@ -1,0 +1,21 @@
+.items-amount {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.items-amount {
+  font-size: 20px;
+}
+.items-amount button,
+.item-attributes button {
+  min-width: 24px;
+  height: 24px;
+  border-radius: 0px;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid black;
+  cursor: pointer;
+  
+}

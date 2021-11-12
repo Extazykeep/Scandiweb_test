@@ -1,0 +1,92 @@
+.cartBox {
+  position: relative;  
+  margin-left: 20px;
+}
+.cartWindow {
+  position: fixed;
+  border: 1px solid grey;
+  width: 305px;
+  min-height: 200px;
+  right: 160px;
+  z-index: 50;
+  background-color: #fff;
+  margin-top: 27px;
+  border: none;
+  padding: 10px;
+}
+.basket {
+  padding: 3px;
+}
+.cart-menu {
+  height: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.items-count {
+  z-index: -1;
+  position: absolute;
+  right: -12px;
+  top: -10px;
+  width: 21px;
+  text-align: center;
+  border-radius: 50%;
+  color: white;  
+  font-weight: bold;
+  background-color: black;
+}
+.items-wrapper {
+  margin-top: 23px;
+  margin-bottom: 42px;
+}
+.totalandbtns {
+  width: 99%;
+  margin-top: auto;
+}
+.total-price {
+  font-family: 'Raleway';
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 35px;
+}
+.bagandcheck {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.view-bag {  
+  font-family: 'Raleway';
+  width: 140px;
+  height: 40px;
+  background-color: transparent;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
+.checkout {
+  width: 140px;
+  height: 40px;
+  background-color: #5ECE7B;
+  border: none;
+  color: #fff; 
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cart-menu .items-wrapper {
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.cart-menu .items-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+.cart-menu .items-wrapper::-webkit-scrollbar-thumb {
+  background-color: grey;
+}

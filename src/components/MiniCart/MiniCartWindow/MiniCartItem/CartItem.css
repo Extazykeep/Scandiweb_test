@@ -1,0 +1,49 @@
+.cart-item-wrapper {
+  margin-bottom: 41px;
+  display: flex;
+}
+.item-description {
+  display: flex;
+  width: 65%;
+  justify-content: space-between;
+}
+.item-attributes button {
+  margin-right: 5px;
+  font-size: 17px;
+  text-align: center;
+  padding: 0;
+  width: auto;
+  padding: 2px;
+}
+.item-info__name {
+  margin-top: 5px;
+  font-weight: 300;
+}
+.item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.item-info__price {
+  margin-top: 5px;
+  font-style: "Raleway";
+  margin-bottom: 27px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.image-block {
+  margin-left: 10px;
+  width: 35%;
+  height: 100%;
+}
+
+.image-block img {
+  width: 100%;
+  height: auto;
+}
+
+/* .item-attributes {
+  display: flex;
+  justify-content: space-around;
+} */

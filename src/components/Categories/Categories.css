@@ -1,0 +1,29 @@
+.categories {
+  display: flex;
+}
+.categories p{
+  margin: 0;
+  margin-right: 20px;
+  margin-top: 30px;
+  font-size: 20px;  
+  text-transform: uppercase;
+  cursor: pointer;
+  
+}
+.selected {
+  color: #5ECE7B;
+  border-bottom: 2px solid #5ECE7B;    
+  padding-bottom: 20px;
+}
+.cartWindow {
+  z-index: 50;
+}
+.darkmode {
+  position: fixed;
+  z-index: 5;
+  right: 0;
+  top: 80px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(57, 55, 72, 0.22);
+}

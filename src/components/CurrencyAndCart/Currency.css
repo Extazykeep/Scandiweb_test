@@ -1,0 +1,17 @@
+.currency {
+  display: flex;
+}
+.currency select {
+  border: none;
+  outline: none;
+  font-size: 18px;
+}
+.currency option {
+  border: none;
+  outline: none;
+  font-size: 18px;
+}
+
+.cartBox {
+  cursor: pointer;
+}

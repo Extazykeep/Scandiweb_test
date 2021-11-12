@@ -1,0 +1,28 @@
+.main-cart { 
+  margin-top: 85px;
+  padding-bottom: 50px;
+  color: #1D1F22;
+}
+.goodsWrapper {
+  margin-top: 110px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.cart {
+  font-weight: bold;
+  font-size: 32px;  
+}
+.items-wrapper {
+  margin-top: 70px;
+}
+.quantityandthumb button {
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+  font-weight: 300;
+  opacity: 0.8;
+}
+.quantityandthumb p {
+  font-size: 24px;
+}

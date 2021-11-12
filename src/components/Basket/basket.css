@@ -1,0 +1,9 @@
+.basket {
+  cursor: pointer;  
+  display: flex;
+  align-items: center;
+}
+.backto {
+  color: black;
+  margin-left: 20px;  
+}
