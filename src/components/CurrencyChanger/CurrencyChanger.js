@@ -3,8 +3,7 @@ import {Currencies} from '../queries';
 import {
   useQuery
 } from "@apollo/client";
-import {currencyStore} from '../../redux/currencyStore'
-
+import {currencyStore, currencyIcon} from '../../redux/currencyStore'
 
 function injectCurrencies(Component) {
   const InjectedCurrencies= function () {
@@ -14,34 +13,81 @@ function injectCurrencies(Component) {
   return InjectedCurrencies;
 }
 
-class CurrencyChanger extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {value : ""};
-    this.handleChange = this.handleChange.bind(this);
+class CustomSelect extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      SelectText: "",
+      showOptionList: false,
+      currencyList: []
+    };
   }
-  componentDidUpdate(prevProps) {        
-    if (this.props.currency !== prevProps.currency) {      
-       let data = this.props.currency.data.currencies; 
-      this.setState({data}) 
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutside);
+    this.setState({
+      SelectText: currencyIcon[currencyStore.getState()]      
+    });
+  }
+  componentDidUpdate(prevProps) { 
+    if (this.props.currency !== prevProps.currency) { 
+     const currencyList = this.props.currency.data.currencies; 
+     this.setState({currencyList: currencyList}) 
+   } 
+  } 
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+  }
+  handleClickOutside = e => {
+    if (
+      !e.target.classList.contains("custom-select-option") &&
+      !e.target.classList.contains("selected-text")
+    ) {
+      this.setState({
+        showOptionList: false
+      });
     }
-  }
-  handleChange(event) {
-    this.setState({value: event.target.value});
-    currencyStore.dispatch({ type: event.target.value })
-  }
-  render(){
-    const {loading, error} = this.props.currency;       
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
+  };  
+  handleListDisplay = () => {
+    this.setState({showOptionList: !this.state.showOptionList});
+  };
+  handleOptionClick = e => {
+    const currency = e.target.getAttribute("data-name");
+    const selectEd = e.target.innerHTML.split(" ")[0];
+    currencyStore.dispatch({ type: currency })
+    this.setState({
+      SelectText: selectEd, showOptionList: false
+    });
+  };
+  render() {
+    const { currencyList,showOptionList, SelectText } = this.state;
+    const icon = currencyIcon;
     return (
-    <select value={this.state.value} onChange={this.handleChange}> 
-        {this.state.data ? this.state.data.map((currency,index)=> (
-            <option key={index}>{currency} </option>
-    )) :null}
-    </select>
-    )
+      <div className="custom-select-container">
+        <div
+          className={showOptionList ? "selected-text active" : "selected-text"}
+          onClick={this.handleListDisplay}
+        >
+        {SelectText}
+        </div>
+        {showOptionList && (
+          <ul className="select-options">
+            {currencyList.length ?  currencyList.map(currency => {
+              return (
+                <li
+                  className="custom-select-option"
+                  data-name={currency}
+                  key={currency}
+                  onClick={this.handleOptionClick}
+                >
+                 {icon[currency]} {currency}
+                </li>
+              );
+            }) : null}
+          </ul>
+        )}
+      </div>
+    );
   }
 }
 
-export default injectCurrencies(CurrencyChanger)
+export default injectCurrencies(CustomSelect)

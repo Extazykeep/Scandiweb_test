@@ -11,10 +11,13 @@ class ProductPrice extends React.Component {
   render(){
     const prices = this.props.prices;
     const icon = currencyIcon;
+    const currency = this.state.currency
     return (
       <div className="single-product-price">
           <span>price: </span>
-           <p className="cart-price">{icon[this.state.currency] + prices.filter((item)=> item.currency === this.state.currency)[0].amount}</p>
+          <p className="cart-price">
+            {icon[currency] + prices.filter((item)=> item.currency === currency)[0].amount}
+          </p>
       </div>  
    )
   }

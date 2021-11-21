@@ -4,9 +4,19 @@
   margin-top: 85px;
   color: #1D1F22;
 }
+.main > span {
+  text-transform: uppercase;
+}
+
 .goodsWrapper {
+  width: 100%;
   margin-top: 110px;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-between;
+}
+.goodsWrapper::after {
+  content: "";
+  width: 30%;
+  max-width: 354px;
 }

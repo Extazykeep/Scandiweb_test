@@ -5,3 +5,9 @@
   height: 80px;
   width: 100%;
 }
+.select-currency {
+  text-align: center;
+}
+.select-currency option {
+  text-align: center;
+}

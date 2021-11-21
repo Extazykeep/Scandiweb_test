@@ -2,16 +2,19 @@ import React from 'react';
 import productStore from '../../redux/productStore';
 import './product.css';
 import AttrSet from '../AttrSet/AttrSet';
-import Gallery from './Gallery/Gallery'
+import Gallery from './Gallery/Gallery';
 import ProductPrice from './ProductPrice/ProductPrice';
-import cartStore from "../../redux/CartState"
+import cartStore from "../../redux/CartState";
+import ReactHtmlParser from "react-html-parser";
+
+
 
 class productSingle extends React.Component {
   constructor(){   
     super() 
     this.state = {item: productStore.getState().state, attrPicked: false};
     this.addToCart = this.addToCart.bind(this);
-    this.setAttr = this.setAttr.bind(this);
+    this.setAttr = this.setAttr.bind(this);    
   }
   addToCart(item) {
     const atrobj = {};
@@ -30,11 +33,14 @@ class productSingle extends React.Component {
   }
   findSimilar(newItem){
     let k = -5;
-    cartStore.getState().cartItems.forEach((element,index)=>{ 
-      if(JSON.stringify(element.pickedAttrs)===JSON.stringify(newItem.pickedAttrs) && element.name === newItem.name ) {
-        k = index;
-        return
-      }
+    cartStore.getState().cartItems.forEach((element,index)=>
+    { 
+      if(JSON.stringify(element.pickedAttrs)===JSON.stringify(newItem.pickedAttrs) 
+      && element.name === newItem.name) 
+        {
+          k = index;
+          return
+        }
     })
     return k
   } 
@@ -54,31 +60,42 @@ class productSingle extends React.Component {
     this.setState({[name]: item.value}) 
   }
   render(){
-    const product = this.state.item;       
+    const product = this.state.item;
+    const stock = this.state.attrPicked && product.inStock;
     return (
       product ?  
-      <div>
+      (<div>
         <div className="product-container">
-          <Gallery gallery={product.gallery}/>
+          <Gallery gallery={product.gallery} stock={product.inStock}/>
           <div className="product-about">
             <div className="single-product-name">
                 <span>{product.name.replace(/ .*/,'')}</span>
                 <p>{product.name.match(/ .*/)}</p>
             </div>
             <div className="single-product-attributes">
-                {!product.attributes.length ? null :
-                    product.attributes.map((item,index)=> (
-                      <AttrSet key={`${item.name}_${index}`}  item = {item} setAttr={this.setAttr}/>
-                    ))
-                }  
+              {!product.attributes.length ? null :
+                product.attributes.map((item,index)=> (
+                  <AttrSet 
+                    key={`${item.name}_${index}`} 
+                    item = {item} 
+                    setAttr={this.setAttr}
+                  />
+                ))
+              }  
             </div>
             <ProductPrice prices = {product.prices}/> 
-            <button  disabled={!this.state.attrPicked} className={`add-to-cart-single ${!this.state.attrPicked ? 'btn-disabled' : ''}`} onClick={()=>{this.addToCart(product)}} > add to cart</button>
-            <div className="single-product-description" dangerouslySetInnerHTML={{ __html: product.description }}>
+            <button  
+              disabled={!stock} 
+              className={`add-to-cart-single ${!stock ? 'btn-disabled' : ''}`} 
+              onClick={()=>{this.addToCart(product)}}
+            > 
+            add to cart</button>
+            <div className="single-product-description" >
+              {ReactHtmlParser(product.description)}
             </div>
           </div>
         </div> 
-      </div>
+      </div>)
       : null    
     )
   }

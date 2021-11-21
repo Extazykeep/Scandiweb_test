@@ -25,9 +25,8 @@
   justify-content: space-between;
 }
 .item-info__price {
-  margin-top: 5px;
   font-style: "Raleway";
-  margin-bottom: 27px;
+  margin: 18px 0px;
   font-weight: 500;
   font-size: 16px;
 }

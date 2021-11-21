@@ -1,34 +1,33 @@
 import React from 'react';
 import './Categories.css';
-import filterStore from '../../redux/filterStore';
-
+import {Link} from "react-router-dom";
 
 class Categories extends React.Component {
-  constructor(props){
-    super(props);
-    this.filterAndSelectHandler = this.filterAndSelectHandler.bind(this);
-    this.state = {filter: filterStore.getState()};
+  constructor(){
+    super();
+    this.selectHandler = this.selectHandler.bind(this);
+    this.state = {filter: "all"};
+    this.types = ["all","tech","clothes"];
   }  
-  filterAndSelectHandler(type){
+  selectHandler(type){
     this.setState({filter: type});
-    filterStore.dispatch({type: type})
   }
   render() {  
-    const filter = this.state.filter;   
+    const filter = this.state.filter; 
     return (
       <div className="categories">
-        <p  className={filter === "all" ? "selected" : ""} 
-        onClick ={()=> {this.filterAndSelectHandler("all")}}>
-        All</p>        
-        <p className={filter === "tech" ? "selected" : ""} 
-        onClick ={()=> {this.filterAndSelectHandler("tech");          
-        }}>
-        Tech</p>
-        <p className={filter === "clothes" ? "selected" : ""} 
-        onClick ={()=> {this.filterAndSelectHandler("clothes");          
-          }}>
-        Clothes</p>
-      </div>
+        {this.types.map((item)=>{
+          return (
+          <Link
+            className={filter === item ? "selected" : ""} 
+            to={"/" + item} 
+            onClick ={(e)=> {this.selectHandler(e.target.innerHTML)}}
+          >
+           {item}
+          </Link>
+          )
+        })}
+      </div> 
     )
   }
 }

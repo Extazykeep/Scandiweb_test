@@ -10,27 +10,34 @@ class CartAttributes extends React.Component {
     this.setState({picked: {...picked}});
   }
   componentDidUpdate(prevProps){
-    if(this.props.item != prevProps.item){
+    if(this.props.item !== prevProps.item){
       const picked = this.props.picked;     
       this.setState({picked: {...picked}});
     }
   }
   render( ){
-    const items = this.props.item;   
+    const items = this.props.item; 
+    const picked = this.state.picked;    
     return( 
-      <div>
+      <div className="item-attrname">
+          <div>{items.name}</div>
           {
           items.type === "swatch" ? 
-          items.items.map((item,index)=> (            
-              <button key={`${item.name}_${index}`} className={`attribute-value ${this.state.picked[items.name] === item.value ? 'active-trans' : ''}`} style={{backgroundColor: item.value}}> 
+            items.items.map((item,index)=> (            
+              <button 
+                key={`${item.name}_${index}`} 
+                className={`attribute-value ${picked[items.name] === item.value ? 'active-trans' : ''}`} 
+                style={{backgroundColor: item.value}}> 
               </button>                        
-          ))
+            ))
           : 
-          items.items.map((item,index)=> (
-              <button key={`${item.name}_${index}`}  className={`attribute-value ${this.state.picked[items.name] === item.value ? 'actives' : ''}`}>
+            items.items.map((item,index)=> (
+              <button 
+                key={`${item.name}_${index}`}  
+                className={`attribute-value ${picked[items.name] === item.value ? 'actives' : ''}`}>
                 {item.value}
               </button>             
-          ))
+            ))
          }
       </div>
     )

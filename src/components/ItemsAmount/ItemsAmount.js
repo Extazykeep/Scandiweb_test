@@ -11,15 +11,19 @@ class ItemsAmount extends React.Component {
     this.findSimilar = this.findSimilar.bind(this);
   }
   quantityHanlder(type,attrs,name){
-    if(type === "plus") {
-      cartStore.dispatch({type: "INCREMENT", payload: this.findSimilar(attrs,name)})
-    }  
-    if(type === "minus" && cartStore.getState().cartItems[this.findSimilar(this.props.item.pickedAttrs,name)].itemCount === 1){
-     this.removeItem([attrs,name])      
-    }
-    if(type === "minus"){
-      cartStore.dispatch({type: "DECREMENT", payload: this.findSimilar(attrs,name)})
-    }
+    if(type === "plus") 
+      {
+        cartStore.dispatch({type: "INCREMENT", payload: this.findSimilar(attrs,name)})
+      }  
+    if(type === "minus" && 
+    cartStore.getState().cartItems[this.findSimilar(this.props.item.pickedAttrs,name)].itemCount === 1)
+      {
+        this.removeItem([attrs,name])      
+      }
+    if(type === "minus")
+      {
+        cartStore.dispatch({type: "DECREMENT", payload: this.findSimilar(attrs,name)})
+      }
   }
   findSimilar(attrs,name){
     let k = null;

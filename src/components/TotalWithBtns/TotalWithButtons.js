@@ -10,12 +10,13 @@ import { currencyIcon,currencyStore } from '../../redux/currencyStore';
      currencyStore.subscribe(() => this.setState({currency: currencyStore.getState()}));  
    }
   render(){
-    const icon = currencyIcon; 
+    const icon = currencyIcon;
+    const currency = this.state.currency; 
     return(
         <div className="totalandbtns"> 
           <div className="total-price">
               <span>Total</span>
-              <span>{icon[this.state.currency] + CountTotal(this.props.cartItems,this.state.currency)}</span>
+              <span>{icon[currency] + CountTotal(this.props.cartItems,currency)}</span>
           </div>
           <div className="bagandcheck">
             <Link  to="/cart" onClick={()=>{this.props.setOverlayyy()}}>              

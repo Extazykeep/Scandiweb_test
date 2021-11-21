@@ -13,8 +13,8 @@ class MiniCartWindow extends React.Component {
       {     
       <div className="cart-menu">
         <div>
-          <h3 style={{display: "inline"}}>My bag, </h3>                 
-          <span style={{fontWeight: "bold"}}>{itemsLength} {itemsLength === 1 ? "item" : "items"}.</span>
+          <h3 className="minicart-mybag">My bag, </h3>                 
+          <span>{itemsLength} {itemsLength === 1 ? "item" : "items"}.</span>
         </div>
         <div className="items-wrapper">
           {cartItems.map((item,index)=> (

@@ -29,6 +29,9 @@
 .mini-attributes .attribute-value{
 opacity: 0.3;
 }
+.item-attrname {
+  margin-top: 10px;
+}
 
 .main-cart .attribute-value {
   width: 60px;

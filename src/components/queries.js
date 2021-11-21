@@ -2,9 +2,9 @@ import {
   gql
 } from "@apollo/client";
 
-const Products = gql`
-query GetExchangeRates{
-  category {
+const FETCH_Products = gql`
+query products($categoryInput: CategoryInput){
+  category(input: $categoryInput) {
   products{
     name
     inStock
@@ -29,10 +29,10 @@ query GetExchangeRates{
 `;
 
 const Currencies = gql`
-query Currencies{
+query currencies{
   currencies
 } 
 `;
 
 
-export {Products,Currencies}
+export {FETCH_Products,Currencies}

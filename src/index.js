@@ -9,15 +9,15 @@ import {Header,ProductPage,CartPage,productSingle,client} from './components/imp
 ReactDOM.render(
   <Router>
     <ApolloProvider client={client}>
-        <div className="container">
-          <Header />
-          <Switch >
-            <Route exact path="/" component={ProductPage} />
-            <Route exact path="/cart" component={CartPage} />     
-            <Route exact path="/product/:id" component={productSingle} />           
-          </Switch>            
-        </div> 
-    </ApolloProvider>
+      <div className="container">
+        <Header/>
+        <Switch>
+          <Route exact path="/product/:id" component={productSingle} /> 
+          <Route exact path="/cart" component={CartPage} />   
+          <Route path="/" component={ProductPage} />
+        </Switch> 
+      </div> 
+    </ApolloProvider> 
   </Router> , 
   document.getElementById('root')
 );

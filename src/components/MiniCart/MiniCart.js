@@ -8,7 +8,7 @@ class MiniCart extends React.Component {
   constructor(props){
     super(props);  
     this.state = {overlayOpened: false, cartItems: []};
-    this.setOverlayyy =this.setOverlayyy.bind(this);  
+    this.setOverlayyy = this.setOverlayyy.bind(this);  
     cartStore.subscribe(()=>{this.setState({cartItems: cartStore.getState().cartItems })}) 
   }  
   setOverlayyy (){
@@ -16,16 +16,31 @@ class MiniCart extends React.Component {
   }
   render(){
     const cartItems = this.state.cartItems;
-    const itemsLength =  this.state.cartItems.length ? cartItems.reduce((a,b)=> ({itemCount: a.itemCount + b.itemCount})).itemCount : 0;    return (
-      <div className="cartBox" >
-        <img className="basket" src={imagesource} alt="empty" onClick = {()=>{this.setOverlayyy()}} />
-         <div className="items-count">{itemsLength}</div> 
-        {
-        this.state.overlayOpened && 
-         <MiniCartWindow setOverlayyy={this.setOverlayyy} itemsLength={itemsLength} cartItems={cartItems}  />         
-        }
-        <div onClick={()=>{this.setOverlayyy()}} className={this.state.overlayOpened ? "darkmode" : ""}></div> 
-      </div>
+    const itemsLength = cartItems.length ? 
+    cartItems.reduce((a,b)=> ({itemCount: a.itemCount + b.itemCount})).itemCount : 0;   
+     return (
+        <div className="cartBox" >
+            <img 
+              className="basket" 
+              src={imagesource} 
+              alt="empty" 
+              onClick = {()=>{this.setOverlayyy()}} 
+            />
+            <div className="items-count">{itemsLength}</div> 
+            {
+            this.state.overlayOpened && 
+            <MiniCartWindow 
+              setOverlayyy={this.setOverlayyy} 
+              itemsLength={itemsLength} 
+              cartItems={cartItems} 
+            />         
+            }
+            <div 
+              onClick={()=>{this.setOverlayyy()}} 
+              className={this.state.overlayOpened ? "darkmode" : ""}
+            >
+            </div> 
+        </div>
     )
   }
 }

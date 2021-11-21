@@ -29,9 +29,6 @@ hr {
   min-height: 205px;
   justify-content: space-between;
 }
-.item-desc p {
-  margin: 0;
-}
 .main-cart .item-name span{
   font-size: 30px;
   font-weight: 500;
@@ -43,6 +40,7 @@ hr {
 }
 .cart-price {
   font-size: 24px;
+  margin: 25px 0;
   font-weight: bold;
 }
 .main-cart .cart-attribute__set {

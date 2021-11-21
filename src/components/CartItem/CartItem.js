@@ -14,6 +14,7 @@ class CartItem extends React.Component {
   render() {
     const item = this.props.item;    
     const icon = currencyIcon; 
+    const currency = this.state.currency
     return (
       <div className="cart-item">
         <hr></hr>
@@ -23,15 +24,18 @@ class CartItem extends React.Component {
                 <span>{item.name.replace(/ .*/,'')}</span>
                 <div>{item.name.match(/ .*/)}</div>
             </div>            
-            <p className="cart-price">{icon[this.state.currency] + item.prices.filter((item)=> item.currency === this.state.currency)[0].amount}</p>
+            <p className="cart-price">
+              {icon[currency] + item.prices.filter((item)=> item.currency === currency)[0].amount}
+            </p>
             <div className="cart-attribute__set">
-              <ItemAttributes item={item}/>
+              <ItemAttributes item = {item}/>
             </div>
           </div>
           <div className="quantityandthumb">
               <ItemsAmount item = {item}/>
               <div className="thumbnail">
-                <img src={item.gallery[0]} alt="galleryitem"/>
+                <div><img src={item.gallery[0]} alt="galleryitem"/></div>
+                
               </div>
           </div>
         </div>

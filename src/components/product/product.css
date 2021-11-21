@@ -3,6 +3,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .product-gallery {
   width: 55%;
   display: flex;
@@ -29,9 +30,13 @@
   height: 100%;
   object-fit: contain;
 }
+.product-gallery-main .outof{
+  font-size: 30px;
+}
 .product-gallery-main {
   margin-left: 40px;
   max-width: 610px;
+  position: relative;
   max-height: 812px;
 }
 .product-gallery-main  img {

@@ -4,6 +4,8 @@
   align-items: center;
 }
 .backto {
+  display: flex;
   color: black;
+  align-items: center;
   margin-left: 20px;  
 }

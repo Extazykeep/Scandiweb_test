@@ -15,7 +15,7 @@ class Gallery extends React.Component {
     this.setState({imageUrl: url})
   }
   render(){
-    const gallery = this.props.gallery;    
+    const gallery = this.props.gallery; 
     return (
       <div className="product-gallery">
           <div className="product-gallery-thumbs">
@@ -30,6 +30,12 @@ class Gallery extends React.Component {
           </div>
           <div className="product-gallery-main">
               <img src={this.state.imageUrl} alt="galery-main"/>
+              {
+              this.props.stock ? null : 
+              <div  className="outoffilter">
+                <p className="outof">out of stock</p> 
+              </div>              
+             }  
           </div>
      </div>
     )

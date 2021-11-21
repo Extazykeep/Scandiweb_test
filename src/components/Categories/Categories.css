@@ -1,19 +1,25 @@
 .categories {
   display: flex;
 }
-.categories p{
+.categories a {
+  text-decoration: none;
+}
+.categories a:visited{
+  text-decoration: none;
+  color: #000;
+}
+.categories a{
   margin: 0;
-  margin-right: 20px;
   margin-top: 30px;
   font-size: 20px;  
+  margin-right: 20px;
   text-transform: uppercase;
   cursor: pointer;
-  
+  padding: 21px 7px;
 }
-.selected {
-  color: #5ECE7B;
-  border-bottom: 2px solid #5ECE7B;    
-  padding-bottom: 20px;
+.header .categories .selected {
+  color: #5ECE7B ; 
+  border-bottom: 2px solid #5ECE7B; 
 }
 .cartWindow {
   z-index: 50;

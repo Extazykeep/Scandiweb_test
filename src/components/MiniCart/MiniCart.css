@@ -1,6 +1,5 @@
 .cartBox {
   position: relative;  
-  margin-left: 20px;
 }
 .cartWindow {
   position: fixed;
@@ -77,7 +76,12 @@
   font-weight: 600;
   cursor: pointer;
 }
-
+.minicart-mybag {
+  display: inline;
+}
+.minicart-mybag ~ span {
+  font-weight: bold;
+}
 .cart-menu .items-wrapper {
   max-height: 600px;
   overflow-y: auto;

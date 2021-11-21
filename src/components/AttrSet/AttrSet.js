@@ -21,18 +21,25 @@ class AttrSet extends React.Component {
           {
           items.type === "swatch" ? 
           items.items.map((item,index)=> (            
-              <button key={`${item.name}_${index}`} onClick={()=>{ this.setActive(index,item,items.name) 
-               }} className={`attribute-value ${this.state.active === index? 'active-trans' : ''}`} style={{backgroundColor: item.value}}> 
-              </button>                        
+            <button 
+              key={`${item.name}_${index}`} 
+              onClick={()=>{this.setActive(index,item,items.name)}} 
+              className={`attribute-value ${this.state.active === index ? 'active-trans' : ''}`} 
+              style={{backgroundColor: item.value}}
+            > 
+            </button>                        
           ))
           : 
           items.items.map((item,index)=> (              
-              <button key={`${item.name}_${index}`} onClick={()=>{this.setActive(index,item,items.name)
-               }} className={`attribute-value ${this.state.active === index? 'actives' : ''}`}>
-                {item.value}
-              </button>             
+            <button 
+              key={`${item.name}_${index}`} 
+              onClick={()=>{this.setActive(index,item,items.name)}} 
+              className={`attribute-value ${this.state.active === index ? 'actives' : ''}`}
+            >
+              {item.value}
+            </button>             
           ))
-         }
+          }
         </div>
           
         </div>

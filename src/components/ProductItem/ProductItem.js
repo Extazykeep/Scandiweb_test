@@ -39,19 +39,28 @@ class ProductItem extends React.Component {
   render(){ 
     const icon = currencyIcon;
     const product = this.props.product;
-    
+    const currency = this.state.currency;    
     return (
       <div  className="item-wrapper"> 
-       <Link className="link-wrapper"  onClick={()=>{this.addProduct(product)
-      }}  to={"/product/" + product.name}>    
+       <Link 
+        className="link-wrapper" 
+        onClick={()=>{this.addProduct(product)}}  
+        to={"/product/" + product.name}
+       >    
         <div className={!product.inStock ? "outofstock" : ""}>          
           <div className="image-wrapper">
             <img src={product.gallery[0]} alt="galery" className="product-image"/>
             {this.state.incart ? <img src={CartIcon} alt="cart-icon" className="small-cart__icon"/> : null}           
           </div>
-            <p className="product-name">{product.name} </p> 
-            <p className="product-name">{product.attributes.name} </p> 
-            <p className="product-price">{icon[this.state.currency]}{product.prices.filter((item)=> item.currency === this.state.currency)[0].amount}</p>   
+            <p className="product-name">
+              {product.name}
+            </p> 
+            {/* <p className="product-name">
+              {product.attributes.name} 
+            </p>  */}
+            <p className="product-price">
+              {icon[currency]}{product.prices.filter((item)=> item.currency === currency)[0].amount}
+            </p>   
             {
               product.inStock ? null : 
               <div  className="outoffilter">
