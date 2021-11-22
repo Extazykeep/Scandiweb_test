@@ -1,15 +1,14 @@
-import React from 'react';
+import React from 'react'
 import imagesource from '../../images/basket.png'
-import './basket.css';
-
+import './basket.css'
 
 class Basket extends React.PureComponent {
-  render(){   
+  render () {
     return (
       <div className="basket">
-          <img  src={imagesource} alt="basket"/>                          
+          <img src={imagesource} alt="basket"/>
       </div>
     )
   }
 }
-export default Basket;
+export default Basket

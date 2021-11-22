@@ -1,11 +1,10 @@
-import React from 'react';
-import './Currency.css';
-import MiniCart from '../MiniCart/MiniCart';
-import CustomSelect from '../CurrencyChanger/CurrencyChanger';
-
+import React from 'react'
+import './Currency.css'
+import MiniCart from '../MiniCart/MiniCart'
+import CustomSelect from '../CurrencyChanger/CurrencyChanger'
 
 class CurrencyandCart extends React.Component {
-  render() {
+  render () {
     return (
       <div className="currency">
         <CustomSelect />

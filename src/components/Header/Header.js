@@ -1,8 +1,8 @@
-import React from 'react';
-import Categories from '../Categories/Categories';
-import Basket from '../Basket/Basket';
-import CurrencyAndCart from '../CurrencyAndCart/CurrencyAndCart';
-import './Header.css';
+import React from 'react'
+import Categories from '../Categories/Categories'
+import Basket from '../Basket/Basket'
+import CurrencyAndCart from '../CurrencyAndCart/CurrencyAndCart'
+import './Header.css'
 
 class Headerr extends React.Component {
   render () {
@@ -16,4 +16,4 @@ class Headerr extends React.Component {
   }
 }
 
-export default Headerr;
+export default Headerr

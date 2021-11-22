@@ -1,21 +1,21 @@
-import React from 'react';
-import CartAttributes from '../AttrSet/CartAttributes/CartAttributes';
-
+import React from 'react'
+import CartAttributes from '../AttrSet/CartAttributes/CartAttributes'
 
 class ItemAttributes extends React.PureComponent {
-  render(){
-    const item = this.props.item;
+  render () {
+    const item = this.props.item
     return (
-      <div className="item-attributes mini-attributes">  
-       {!item.attributes.length ? null :
-            item.attributes.map((item,index)=> (
+      <div className="item-attributes mini-attributes">
+       {!item.attributes.length
+         ? null
+         : item.attributes.map((item, index) => (
               <CartAttributes
-                key={`${item.pickedAttrs}_${index}`} 
-                picked={this.props.item.pickedAttrs} 
+                key={`${item.pickedAttrs}_${index}`}
+                picked={this.props.item.pickedAttrs}
                 item = {item}
                />
-            ))
-        }  
+         ))
+        }
       </div>
     )
   }

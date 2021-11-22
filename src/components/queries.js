@@ -1,6 +1,6 @@
 import {
   gql
-} from "@apollo/client";
+} from '@apollo/client'
 
 const FETCH_Products = gql`
 query products($categoryInput: CategoryInput){
@@ -26,13 +26,37 @@ query products($categoryInput: CategoryInput){
   }
 } 
 }
-`;
+`
+const PRODUCT_SINGLE = gql`
+query productSinle{
+  category{
+  products{
+    name
+    inStock
+    gallery
+    description
+    category
+    prices {
+        currency
+        amount
+      }
+    attributes {      
+      name
+      type
+      items {
+        value
+        id
+      }
+    }  
+  }
+} 
+}
+`
 
 const Currencies = gql`
 query currencies{
   currencies
 } 
-`;
+`
 
-
-export {FETCH_Products,Currencies}
+export { FETCH_Products, Currencies, PRODUCT_SINGLE }
