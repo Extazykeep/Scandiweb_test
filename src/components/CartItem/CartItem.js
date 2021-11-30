@@ -3,6 +3,7 @@ import ItemsAmount from '../ItemsAmount/ItemsAmount'
 import './CartItem.css'
 import { currencyIcon, currencyStore } from '../../redux/currencyStore'
 import ItemAttributes from '../ItemAttributes/ItemAttributes'
+import SliderGallery from './SliderGallery'
 
 class CartItem extends React.Component {
   constructor () {
@@ -15,6 +16,7 @@ class CartItem extends React.Component {
     const item = this.props.item
     const icon = currencyIcon
     const currency = this.state.currency
+    const gallery = item.gallery
     return (
       <div className="cart-item">
         <hr></hr>
@@ -33,10 +35,7 @@ class CartItem extends React.Component {
           </div>
           <div className="quantityandthumb">
               <ItemsAmount item = {item}/>
-              <div className="thumbnail">
-                <div><img src={item.gallery[0]} alt="galleryitem"/></div>
-
-              </div>
+              <SliderGallery gallery={gallery}/>
           </div>
         </div>
       </div>

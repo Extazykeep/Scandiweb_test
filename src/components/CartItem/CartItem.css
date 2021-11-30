@@ -10,16 +10,7 @@ hr {
   align-items: center;
   padding: 10px;
 }
-.thumbnail {
-  width: 141px;
-  min-height: 185px;
-  margin-left: 10px;
-}
-.thumbnail img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
+
 .quantityandthumb {
   display: flex;
 }
@@ -45,4 +36,19 @@ hr {
 }
 .main-cart .cart-attribute__set {
   margin-top: 12px;
+}
+.slider-arrow {
+  position: absolute;
+  font-size: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+.slider-arrow-left {
+left: -5px;
+}
+.slider-arrow-right {
+  left: 105px;
 }

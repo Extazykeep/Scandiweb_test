@@ -6,14 +6,13 @@ import ProductPrice from './ProductPrice/ProductPrice'
 import cartStore from '../../redux/CartState'
 import ReactHtmlParser from 'react-html-parser'
 import { useQuery } from '@apollo/client'
-import { PRODUCT_SINGLE } from '../queries'
-
+import { PRODUCT_SINGLE} from '../queries'
 //  i wish i could  fetch with query single product by name or id
 // but there is no resolver in graphql endpoint or i just dumb
 
 function injectProduct (Component) {
   const InjectedProducts = function (props) {
-    const fetchProduct = useQuery(PRODUCT_SINGLE)
+    const fetchProduct = useQuery(PRODUCT_SINGLE)  
     const product = fetchProduct.data
       ? fetchProduct.data.category.products.filter(
         (product) => product.name === props.match.params.id)
@@ -22,6 +21,8 @@ function injectProduct (Component) {
   }
   return InjectedProducts
 }
+
+
 
 class productSingle extends React.Component {
   constructor (props) {
@@ -39,7 +40,7 @@ class productSingle extends React.Component {
     const newItem = JSON.parse(JSON.stringify(item))
     newItem.pickedAttrs = atrobj
     newItem.itemCount = 1
-    if (this.findSimilar(newItem) !== -5) {
+    if (this.findSimilar(newItem) !== -5) {      
       cartStore.dispatch({ type: 'INCREMENT', payload: this.findSimilar(newItem) })
     } else {
       cartStore.dispatch({ type: 'ADD_PRODUCT', payload: newItem })

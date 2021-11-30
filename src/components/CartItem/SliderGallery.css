@@ -1,0 +1,25 @@
+.viewport {
+  overflow: hidden;
+  position: absolute;
+  display: flex;
+  transition: all 0.3s;
+}
+.gallery-item {
+  width: 141px;
+  min-height: 185px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.viewport img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.slider-wrapper {
+  margin-left: 20px;
+  width: 141px;
+  min-height: 185px;
+  position: relative;
+  overflow: hidden;
+}

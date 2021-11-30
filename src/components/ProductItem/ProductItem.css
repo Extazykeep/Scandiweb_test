@@ -5,10 +5,23 @@
   display: flex;  
   justify-content: center;
   cursor: pointer;
+  position: relative;
 }
-
+.addintcoart {
+  position: absolute;
+  display: none;
+  right: 50px;
+  border: none;
+  background-color: transparent;
+  bottom: 30%;
+  cursor: pointer;
+  z-index: 50;
+}
 .item {
   max-width: 354px;
+}
+.item-wrapper:hover .addintcoart {
+  display: block;
 }
 .link-wrapper {
   padding: 16px;
@@ -28,6 +41,7 @@
 .item-wrapper:hover {
   box-shadow: 0 0 10px rgba(0,0,0,0.15);  
 }
+
 .product-name {
   font-size: 18px;
   margin-top: 24px;

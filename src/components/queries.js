@@ -9,7 +9,6 @@ query products($categoryInput: CategoryInput){
     name
     inStock
     gallery
-    description
     category
     prices {
         currency
@@ -17,15 +16,11 @@ query products($categoryInput: CategoryInput){
       }
     attributes {      
       name
-      type
-      items {
-        value
-        id
-      }
     }  
   }
 } 
 }
+
 `
 const PRODUCT_SINGLE = gql`
 query productSinle{
