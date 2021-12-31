@@ -11,7 +11,9 @@ query products($categoryInput: CategoryInput){
     gallery
     category
     prices {
-        currency
+        currency {
+          symbol
+        }
         amount
       }
     attributes {      
@@ -32,7 +34,9 @@ query productSinle{
     description
     category
     prices {
-        currency
+        currency {
+          symbol
+        }
         amount
       }
     attributes {      
@@ -50,8 +54,11 @@ query productSinle{
 
 const Currencies = gql`
 query currencies{
-  currencies
+  currencies {
+    label
+    symbol
+  }
 } 
 `
 
-export { FETCH_Products, Currencies, PRODUCT_SINGLE }
+export { FETCH_Products,Currencies, PRODUCT_SINGLE }

@@ -1,16 +1,16 @@
 import React from 'react'
 import './ProductItem.css'
-import { currencyIcon, currencyStore } from '../../redux/currencyStore'
+import {currencyStore, whichone } from '../../redux/currencyStore'
 import CartIcon from '../../images/CircleIcon.png'
 import { Link } from 'react-router-dom'
 import cartStore from '../../redux/CartState'
-import CartState from '../../redux/CartState'
 
 class ProductItem extends React.Component {
   constructor () {
     super()
     this.state = { currency: currencyStore.getState(), amount: 0, incart: false }
     currencyStore.subscribe(() => this.setState({ currency: currencyStore.getState() }))
+    
     /* CartState.subscribe(() => { this.isInCart() }) */
   }
   addIntoCart(item){
@@ -52,9 +52,8 @@ class ProductItem extends React.Component {
   } */
 
   render () {
-    const icon = currencyIcon
     const product = this.props.product
-    const currency = this.state.currency
+    const currency = this.state.currency    
     const isPossible = !product.attributes.length && product.inStock
     return (
       <div className="item-wrapper">
@@ -74,7 +73,7 @@ class ProductItem extends React.Component {
               {product.attributes.name}
             </p>
             <p className="product-price">
-              {icon[currency]}{product.prices.filter((item) => item.currency === currency)[0].amount}
+              {currency}{product.prices[whichone[currency]].amount }
             </p>
             {
               product.inStock

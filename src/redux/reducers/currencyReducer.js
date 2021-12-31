@@ -1,15 +1,15 @@
-export default function filterReducer (state = 'USD', action) {
+export default function filterReducer (state = '$', action) {
   switch (action.type) {
-    case 'GBP':
-      return 'GBP'
-    case 'USD':
-      return 'USD'
-    case 'AUD':
-      return 'AUD'
-    case 'RUB':
-      return 'RUB'
-    case 'JPY':
-      return 'JPY'
+    case '£':
+      return '£'
+    case '$':
+      return '$'
+    case 'A$':
+      return 'A$'
+    case '₽':
+      return '₽'
+    case '¥':
+      return '¥'
     default:
       return state
   }

@@ -3,11 +3,11 @@ import { Currencies } from '../queries'
 import {
   useQuery
 } from '@apollo/client'
-import { currencyStore, currencyIcon } from '../../redux/currencyStore'
+import { currencyStore} from '../../redux/currencyStore'
 
 function injectCurrencies (Component) {
   const InjectedCurrencies = function () {
-    const currency = useQuery(Currencies)
+    const currency = useQuery(Currencies)    
     return <Component currency={currency} />
   }
   return InjectedCurrencies
@@ -17,7 +17,7 @@ class CustomSelect extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = {
-      SelectText: '',
+      SelectText: '$',
       showOptionList: false,
       currencyList: []
     }
@@ -25,14 +25,11 @@ class CustomSelect extends React.PureComponent {
 
   componentDidMount () {
     document.addEventListener('mousedown', this.handleClickOutside)
-    this.setState({
-      SelectText: currencyIcon[currencyStore.getState()]
-    })
   }
 
-  componentDidUpdate (prevProps) {
-    if (this.props.currency !== prevProps.currency) {
-      const currencyList = this.props.currency.data.currencies
+  componentDidUpdate (prevProps) {    
+    if (this.props.currency.data !== prevProps.currency.data) {
+      const currencyList = this.props.currency.data.currencies;
       this.setState({ currencyList: currencyList })
     }
   }
@@ -58,16 +55,16 @@ class CustomSelect extends React.PureComponent {
 
   handleOptionClick = e => {
     const currency = e.target.getAttribute('data-name')
-    const selectEd = e.target.innerHTML.split(' ')[0]
-    currencyStore.dispatch({ type: currency })
+    const currrentCurrencyObject = this.state.currencyList.filter((item)=>  item.label === currency)[0]    
+    currencyStore.dispatch({ type: currrentCurrencyObject.symbol })
     this.setState({
-      SelectText: selectEd, showOptionList: false
+      SelectText: currrentCurrencyObject.symbol, showOptionList: false
     })
   };
+  
 
   render () {
     const { currencyList, showOptionList, SelectText } = this.state
-    const icon = currencyIcon
     return (
       <div className="custom-select-container">
         <div
@@ -83,11 +80,11 @@ class CustomSelect extends React.PureComponent {
                 return (
                 <li
                   className="custom-select-option"
-                  data-name={currency}
-                  key={currency}
+                  data-name={currency.label}
+                  key={currency.label}
                   onClick={this.handleOptionClick}
                 >
-                 {icon[currency]} {currency}
+                 {} {currency.label}
                 </li>
                 )
               })

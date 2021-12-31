@@ -1,12 +1,13 @@
 import React from 'react'
 import './Categories.css'
 import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 class Categories extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.selectHandler = this.selectHandler.bind(this)
-    this.state = { filter: 'all' }
+    this.state = { filter: this.props.location.pathname.replace('/', '') }
     this.types = ['all', 'tech', 'clothes']
   }
 
@@ -34,4 +35,4 @@ class Categories extends React.Component {
   }
 }
 
-export default Categories
+export default withRouter(Categories)

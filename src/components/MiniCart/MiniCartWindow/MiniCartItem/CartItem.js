@@ -2,7 +2,7 @@ import React from 'react'
 import './CartItem.css'
 import ItemAttributes from '../../../ItemAttributes/ItemAttributes'
 import ItemsAmount from '../../../ItemsAmount/ItemsAmount'
-import { currencyIcon, currencyStore } from '../../../../redux/currencyStore'
+import { currencyStore, whichone } from '../../../../redux/currencyStore'
 
 class CartItem extends React.Component {
   constructor () {
@@ -12,9 +12,9 @@ class CartItem extends React.Component {
   }
 
   render () {
-    const icon = currencyIcon
     const item = this.props.item
     const currency = this.state.currency
+    console.log(item)
     return (
       <div className="cart-item-wrapper">
          <div className="item-description">
@@ -24,7 +24,7 @@ class CartItem extends React.Component {
                 <div>{item.name.match(/ .*/)}</div>
             </div>
               <p className="item-info__price">
-                {icon[currency] + item.prices.filter((item) => item.currency === currency)[0].amount}
+                {/* {item.prices[whichone[currency]].amount} */}
               </p>
               <ItemAttributes item ={item} />
           </div>

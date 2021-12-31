@@ -5,7 +5,7 @@ import ProductItem from '../ProductItem/ProductItem'
 
 function injectProducts (Component) {
   const InjectedProducts = function (props) {
-    const category = props.filter === 'all' ? '' : props.filter
+    const category = props.filter;
     const response = useQuery(FETCH_Products,
       { variables: { categoryInput: { title: category } } }
     )

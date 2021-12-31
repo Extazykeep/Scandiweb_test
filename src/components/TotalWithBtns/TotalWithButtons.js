@@ -1,7 +1,7 @@
 import React from 'react'
 import CountTotal from './count/CountTotal'
 import { Link } from 'react-router-dom'
-import { currencyIcon, currencyStore } from '../../redux/currencyStore'
+import {currencyStore, whichone} from '../../redux/currencyStore'
 
 class TotalWithButtons extends React.Component {
   constructor () {
@@ -11,13 +11,13 @@ class TotalWithButtons extends React.Component {
   }
 
   render () {
-    const icon = currencyIcon
-    const currency = this.state.currency
+    const currencyIcon = this.state.currency
+    console.log(currencyStore.getState())
     return (
         <div className="totalandbtns">
           <div className="total-price">
               <span>Total</span>
-              <span>{icon[currency] + CountTotal(this.props.cartItems, currency)}</span>
+              <span>{currencyIcon + CountTotal(this.props.cartItems, currencyIcon , whichone)}</span>
           </div>
           <div className="bagandcheck">
             <Link to="/cart" onClick={() => { this.props.setOverlayyy() }}>

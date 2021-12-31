@@ -1,7 +1,7 @@
 import React from 'react'
 import ItemsAmount from '../ItemsAmount/ItemsAmount'
 import './CartItem.css'
-import { currencyIcon, currencyStore } from '../../redux/currencyStore'
+import {currencyStore,whichone } from '../../redux/currencyStore'
 import ItemAttributes from '../ItemAttributes/ItemAttributes'
 import SliderGallery from './SliderGallery'
 
@@ -14,7 +14,6 @@ class CartItem extends React.Component {
 
   render () {
     const item = this.props.item
-    const icon = currencyIcon
     const currency = this.state.currency
     const gallery = item.gallery
     return (
@@ -27,7 +26,7 @@ class CartItem extends React.Component {
                 <div>{item.name.match(/ .*/)}</div>
             </div>
             <p className="cart-price">
-              {icon[currency] + item.prices.filter((item) => item.currency === currency)[0].amount}
+              {currency + item.prices[whichone[currency]].amount}
             </p>
             <div className="cart-attribute__set">
               <ItemAttributes item = {item}/>
