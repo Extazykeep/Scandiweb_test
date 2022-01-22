@@ -13,7 +13,7 @@ class AttrSet extends React.Component {
   }
 
   render () {
-    const items = this.props.item
+    const items = this.props.item  
     return (
       <div className="attr-set">
         <div className="single-attr-set">

@@ -9,8 +9,7 @@ class ProductItem extends React.Component {
   constructor () {
     super()
     this.state = { currency: currencyStore.getState(), amount: 0, incart: false }
-    currencyStore.subscribe(() => this.setState({ currency: currencyStore.getState() }))
-    
+    currencyStore.subscribe(() => this.setState({ currency: currencyStore.getState() }))    
     /* CartState.subscribe(() => { this.isInCart() }) */
   }
   addIntoCart(item){
@@ -54,12 +53,12 @@ class ProductItem extends React.Component {
   render () {
     const product = this.props.product
     const currency = this.state.currency    
-    const isPossible = !product.attributes.length && product.inStock
+    const isPossible = !product.attributes.length && product.inStock      
     return (
       <div className="item-wrapper">
        <Link
         className="link-wrapper"
-        to={'/product/' + product.name}
+        to={'/product/' + product.id}
        >
         <div className={!product.inStock ? 'outofstock' : ''}>
           <div className="image-wrapper">
@@ -67,11 +66,8 @@ class ProductItem extends React.Component {
            {/*  {this.state.incart ? <img src={CartIcon} alt="cart-icon" className="small-cart__icon"/> : null} */}
           </div>
             <p className="product-name">
-              {product.name}
-            </p>
-             <p className="product-name">
-              {product.attributes.name}
-            </p>
+              {product.brand + " " + product.name}
+            </p>            
             <p className="product-price">
               {currency}{product.prices[whichone[currency]].amount }
             </p>

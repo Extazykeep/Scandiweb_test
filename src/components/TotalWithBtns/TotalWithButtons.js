@@ -11,8 +11,7 @@ class TotalWithButtons extends React.Component {
   }
 
   render () {
-    const currencyIcon = this.state.currency
-    console.log(currencyStore.getState())
+    const currencyIcon = this.state.currency   
     return (
         <div className="totalandbtns">
           <div className="total-price">

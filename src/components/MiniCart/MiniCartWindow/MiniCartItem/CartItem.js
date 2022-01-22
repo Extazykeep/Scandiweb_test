@@ -13,18 +13,17 @@ class CartItem extends React.Component {
 
   render () {
     const item = this.props.item
-    const currency = this.state.currency
-    console.log(item)
+    const currency = this.state.currency   
     return (
       <div className="cart-item-wrapper">
          <div className="item-description">
           <div className="item-info">
               <div className="item-name">
-                <span>{item.name.replace(/ .*/, '')}</span>
-                <div>{item.name.match(/ .*/)}</div>
+                <span>{item.brand}</span>
+                <div>{item.name}</div>
             </div>
               <p className="item-info__price">
-                {/* {item.prices[whichone[currency]].amount} */}
+                 {currency + item.prices[whichone[currency]].amount} 
               </p>
               <ItemAttributes item ={item} />
           </div>

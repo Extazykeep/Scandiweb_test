@@ -7,8 +7,8 @@ class Categories extends React.Component {
   constructor (props) {
     super(props)
     this.selectHandler = this.selectHandler.bind(this)
-    this.state = { filter: this.props.location.pathname.replace('/', '') }
-    this.types = ['all', 'tech', 'clothes']
+    this.state = { filter: this.props.location.pathname.replace('/', '') || 'all' }
+    this.types = ['all', 'tech', 'clothes']  
   }
 
   selectHandler (type) {

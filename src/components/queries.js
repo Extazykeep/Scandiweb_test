@@ -18,21 +18,21 @@ query products($categoryInput: CategoryInput){
       }
     attributes {      
       name
-    }  
+    }
+    id
+    brand  
   }
-} 
+  }
 }
-
 `
+
+
 const PRODUCT_SINGLE = gql`
-query productSinle{
-  category{
-  products{
+query productSingle($id: String!){
+  product(id: $id) { 
     name
     inStock
-    gallery
-    description
-    category
+    gallery    
     prices {
         currency {
           symbol
@@ -46,9 +46,10 @@ query productSinle{
         value
         id
       }
-    }  
+    }
+    id
+    brand  
   }
-} 
 }
 `
 

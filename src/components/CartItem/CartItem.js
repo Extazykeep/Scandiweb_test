@@ -22,8 +22,8 @@ class CartItem extends React.Component {
         <div className="item-content">
           <div className="item-desc">
             <div className="item-name">
-                <span>{item.name.replace(/ .*/, '')}</span>
-                <div>{item.name.match(/ .*/)}</div>
+                <span>{item.brand}</span>
+                <div>{item.name}</div>
             </div>
             <p className="cart-price">
               {currency + item.prices[whichone[currency]].amount}
